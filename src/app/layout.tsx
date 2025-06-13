@@ -24,11 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}>
+        <div className="absolute inset-0 gradient-bg z-0 pointer-events-none" />
+        <main className="pt-20 relative z-10">
+          {children}
+        </main>
       </body>
     </html>
+
   );
 }
+
