@@ -122,24 +122,18 @@ export default function Home() {
         </motion.h1>
 
         {/* Reserve space early with transparent h2 */}
-        <div className="min-h-[3.5rem]">
+        <div className="min-h-[3.5rem] w-full text-center">
           {(phase !== "name" || prefixText.length > 0) && (
             <motion.h2
-              className="text-4xl font-extrabold text-[#000080]"
+              className="inline-block text-4xl font-extrabold text-[#000080]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.4 }}
             >
               {prefixText}
-              {/* <span className="text-[#00bfff]">{text}</span> */}
               <span className="text-[#1E90FF] drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]">
                 {text}
               </span>
-
-
-
-              {/* #007bff */}
-
             </motion.h2>
           )}
         </div>
@@ -152,8 +146,7 @@ export default function Home() {
       >
         <Navbar />
       </motion.div>
-
-
+      <div className="absolute left-1/2 top-[600px] -translate-x-1/2 w-1.5 h-40 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-md pointer-events-none" />
 
 
     </main>

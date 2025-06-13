@@ -21,9 +21,28 @@
     --foreground: #ededed;
   }
 }
-
-body {
-  background: var(--background);
+/* body {
+  background: linear-gradient(90deg, #ffffff, #d4dfed, #ffffff);
+  background-size: 400% 100%;
+  animation: gradientSway 20s ease-in-out infinite;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+body {
+  background: linear-gradient(90deg, #f8f9fa, #ced4da, #e9ecef);
+  background-size: 400% 100%;
+  animation: gradientSway 20s ease-in-out infinite;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+@keyframes gradientSway {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
