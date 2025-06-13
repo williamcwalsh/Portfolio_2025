@@ -18,6 +18,7 @@ export default function Home() {
     "name" | "slide" | "prefix" | "looping" | "final"
   >("name");
   const [done, setDone] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
     if (phase !== "name") return;
@@ -26,8 +27,10 @@ export default function Home() {
     const timeout = setTimeout(() => {
       setNameText(full.slice(0, nameText.length + 1));
       if (nameText.length + 1 === full.length) {
+        setShowNavbar(true); // ✅ only controls Navbar
         setTimeout(() => setPhase("slide"), 200);
       }
+
     }, 60);
 
     return () => clearTimeout(timeout);
@@ -143,12 +146,13 @@ export default function Home() {
       </div>
       <motion.div
         initial={{ y: -60, opacity: 0 }}
-        animate={done ? { y: 0, opacity: 1 } : { y: -60, opacity: 0 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }} // easeOutCubic
+        animate={showNavbar ? { y: 0, opacity: 1 } : { y: -60, opacity: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         className="fixed top-4 left-1/2 -translate-x-1/2 z-50"
       >
         <Navbar />
       </motion.div>
+
 
 
 
