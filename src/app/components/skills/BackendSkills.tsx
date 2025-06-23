@@ -1,4 +1,5 @@
 import SkillBadge from "./SkillBadge";
+import { motion } from "framer-motion";
 
 const skills = [
     { label: "TypeScript", imageSrc: "https://img.icons8.com/?size=100&id=Xf1sHBmY73hA&format=png&color=000000" },
@@ -18,15 +19,23 @@ const skills = [
     // Add others
 ];
 
-export default function BackendSkills() {
+type Props = { fromLeft?: boolean };
+
+export default function BackendSkills({ fromLeft = true }: Props) {
     return (
-        <div className="mb-8 flex gap-40 items-start">
+        <motion.div
+            initial={{ opacity: 0, x: fromLeft ? -100 : 100 }}
+            whileInView={{ opacity: 1, x: fromLeft ? [-100, 10, 0] : [100, -10, 0] }}
+            transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="mb-8 flex gap-40 items-start"
+        >
             <div className="min-w-[90px] pt-1 text-xl font-medium">Backend</div>
             <div className="flex flex-wrap gap-4">
                 {skills.map((skill) => (
                     <SkillBadge key={skill.label} {...skill} />
                 ))}
             </div>
-        </div>
+        </motion.div>
     );
 }

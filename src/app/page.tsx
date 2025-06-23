@@ -222,10 +222,11 @@ export default function Home() {
         </section>
       </motion.div>
       <motion.div
+        key="skills-section" // <- force re-render animation
         id="skills"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         className="w-full max-w-6xl mx-auto px-4 mt-[400px]"
       >
         <section className="text-center py-16">

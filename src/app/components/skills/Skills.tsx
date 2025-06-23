@@ -6,12 +6,12 @@ import ToolsSkills from "./ToolsSkills";
 
 export default function Skills() {
     return (
-        <div className="space-y-10">
-            <BackendSkills />
-            <FrontendSkills />
-            <DevOpsSkills />
-            <PracticesSkills />
-            <ToolsSkills />
+        <div className="space-y-16">
+            <BackendSkills fromLeft={true} />
+            <FrontendSkills fromLeft={false} />
+            <DevOpsSkills fromLeft={true} />
+            <PracticesSkills fromLeft={false} />
+            <ToolsSkills fromLeft={true} />
         </div>
     );
 }
