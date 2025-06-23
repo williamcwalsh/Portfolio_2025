@@ -221,20 +221,38 @@ export default function Home() {
           </div>
         </section>
       </motion.div>
+      {/* we need the div here to reserve the space for growing separator bar */}
+      <div className="relative h-[25rem] my-12 flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, height: "1.5rem" }}
+          whileInView={{ opacity: 1, height: "25rem" }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: .5, ease: "easeOut" }}
+          className="w-1.5 bg-[#000080] rounded-full shadow-md pointer-events-none"
+        />
+      </div>
       <motion.div
         key="skills-section" // <- force re-render animation
         id="skills"
         initial={{ opacity: 0, y: 80 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-        className="w-full max-w-6xl mx-auto px-4 mt-[400px]"
+        className="w-full max-w-6xl mx-auto px-4"
       >
         <section className="text-center py-16">
           <h2 className="text-3xl font-bold text-[#000080] mb-12">Skills</h2>
           <Skills />
         </section>
       </motion.div>
-
+      <div className="relative h-[25rem] my-12 flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, height: "1.5rem" }}
+          whileInView={{ opacity: 1, height: "25rem" }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: .5, ease: "easeOut" }}
+          className="w-1.5 bg-[#000080] rounded-full shadow-md pointer-events-none"
+        />
+      </div>
     </>
 
   );
