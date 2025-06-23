@@ -192,7 +192,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0, height: "25rem" }}   // full vertical bar height
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="absolute left-1/2 -translate-x-1/2 w-1.5 rounded-full bg-[#000080] shadow-md pointer-events-none"
-            style={{ top: '1100px' }}
+            style={{ top: '900px' }}
           />
         )}
 
