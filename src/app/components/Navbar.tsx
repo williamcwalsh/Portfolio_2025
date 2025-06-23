@@ -9,7 +9,7 @@ export default function Navbar() {
             className="w-full flex flex-wrap justify-center items-center 
   gap-x-8 gap-y-3 px-8 py-4 rounded-full 
   backdrop-blur-md bg-gray-200/30 border border-white/20 shadow-lg 
-  text-base font-semibold text-[#000080]"
+  text-lg font-semibold text-[#000080]"
         >
 
             {navItems.map((item) => (

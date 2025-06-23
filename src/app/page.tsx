@@ -1,5 +1,7 @@
 "use client";
 import Navbar from "./components/Navbar"
+import ProjectCard from "./components/ProjectCard";
+
 
 
 import { useEffect, useState } from "react";
@@ -151,32 +153,59 @@ export default function Home() {
 
         {hasSlid && (
           <motion.div
-            initial={{ opacity: 1, y: 400 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="absolute left-1/2 -translate-x-1/2 w-1.5 h-60 rounded-full 
-              bg-[#000080] shadow-md pointer-events-none"
-            style={{ top: '1000px' }}
+            initial={{ opacity: 0, y: 80, height: "1.5rem" }} // small circle height
+            animate={{ opacity: 1, y: 0, height: "25rem" }}   // full vertical bar height
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="absolute left-1/2 -translate-x-1/2 w-1.5 rounded-full bg-[#000080] shadow-md pointer-events-none"
+            style={{ top: '1100px' }}
           />
         )}
+
       </main>
 
-      {/* ✅ Always-rendered Projects Section in separate container */}
-      <div className="w-full max-w-screen-md mx-auto px-4 mt-[0px]" id="projects">
-        <section className="text-left py-16">
-          <h2 className="text-3xl font-bold text-[#000080] mb-8">Projects</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-            <div className="border border-gray-300 p-6 rounded-lg shadow-md hover:shadow-lg transition">
-              <h3 className="text-xl font-semibold text-[#1E90FF] mb-2">
-                My Portfolio
-              </h3>
-              <p className="text-gray-700">
-                A personal website built with Next.js, Framer Motion, and Tailwind CSS to showcase my work, skills, and experience.
-              </p>
+      {/*  Always-rendered Projects Section in separate container */}
+      <div className="w-full max-w-screen-md mx-auto px-4 mt-[400px]" id="projects">
+        <section className="text-center py-16">
+          <h2 className="text-3xl font-bold text-[#000080] mb-12">Projects</h2>
+          <div className="flex flex-col gap-12 items-center">
+            <div className="flex flex-col gap-12 items-center">
+              <ProjectCard
+                title="CuriosityStream"
+                description="This is a placeholder description for Project 1."
+                imageSrc="/images/placeholder.jpg"
+              />
+              <ProjectCard
+                title="Global Privacy Control— Published by WSJ"
+                description="This is a placeholder description for Project 2."
+                imageSrc="/images/placeholder.jpg"
+              />
+              <ProjectCard
+                title="Cappuccino Games"
+                description="This is a placeholder description for Project 3."
+                imageSrc="/images/placeholder.jpg"
+              />
+              <ProjectCard
+                title="Project 4"
+                description="This is a placeholder description for Project 4."
+                imageSrc="/images/placeholder.jpg"
+              />
+              <ProjectCard
+                title="Project 5"
+                description="This is a placeholder description for Project 5."
+                imageSrc="/images/placeholder.jpg"
+              />
+              <ProjectCard
+                title="Project 6"
+                description="This is a placeholder description for Project 6."
+                imageSrc="/images/placeholder.jpg"
+              />
             </div>
+
           </div>
         </section>
       </div>
+
+
     </>
   );
 
