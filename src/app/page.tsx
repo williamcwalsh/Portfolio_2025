@@ -19,6 +19,7 @@ export default function Home() {
   >("name");
   const [done, setDone] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
+  const [hasSlid, setHasSlid] = useState(false);
 
   useEffect(() => {
     if (phase !== "name") return;
@@ -94,61 +95,89 @@ export default function Home() {
   }, [text, isDeleting, index, phase, done]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center">
-      <div
-        className={`flex flex-col items-center transition-all duration-500 ${phase !== "name" ? "gap-1" : "gap-0"
-          }`}
-      >
-        <motion.h1
-          className="text-4xl font-extrabold text-[#000080]"
-          initial={{ y: 0 }}
-          animate={{
-            y:
-              phase === "slide" ||
-                phase === "prefix" ||
-                phase === "looping" ||
-                phase === "final"
-                ? -30 // 48px = 3rem = Tailwind -translate-y-12
-                : 0,
-          }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          onAnimationComplete={() => {
-            if (phase === "slide") {
-              setPhase("prefix");
-            }
-          }}
+    <>
+      <main className="min-h-screen flex flex-col items-center justify-center px-4 text-center w-full max-w-screen-md mx-auto">
+        <div
+          className={`flex flex-col items-center transition-all duration-500 ${phase !== "name" ? "gap-1" : "gap-0"}`}
         >
-          {nameText}
-        </motion.h1>
+          <motion.h1
+            className="text-4xl font-extrabold text-[#000080]"
+            initial={{ y: 0 }}
+            animate={{
+              y:
+                phase === "slide" ||
+                  phase === "prefix" ||
+                  phase === "looping" ||
+                  phase === "final"
+                  ? -30
+                  : 0,
+            }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            onAnimationComplete={() => {
+              if (phase === "slide") {
+                setPhase("prefix");
+                setHasSlid(true); // ✅ mark when the first line finishes animating
+              }
+            }}
+          >
+            {nameText}
+          </motion.h1>
 
-        {/* Reserve space early with transparent h2 */}
-        <div className="min-h-[3.5rem] w-full text-center">
-          {(phase !== "name" || prefixText.length > 0) && (
-            <motion.h2
-              className="inline-block text-4xl font-extrabold text-[#000080]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-            >
-              {prefixText}
-              <span className="text-[#1E90FF] drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]">
-                {text}
-              </span>
-            </motion.h2>
-          )}
+          <div className="min-h-[3.5rem]">
+            {(phase !== "name" || prefixText.length > 0) && (
+              <motion.h2
+                className="inline-block text-4xl font-extrabold text-[#000080]"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.4 }}
+              >
+                {prefixText}
+                <span className="text-[#1E90FF] drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]">
+                  {text}
+                </span>
+              </motion.h2>
+            )}
+          </div>
         </div>
+
+        <motion.div
+          initial={{ y: -60, opacity: 0 }}
+          animate={showNavbar ? { y: 0, opacity: 1 } : { y: -60, opacity: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90vw] max-w-[700px]"
+        >
+          <Navbar />
+        </motion.div>
+
+        {hasSlid && (
+          <motion.div
+            initial={{ opacity: 1, y: 400 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="absolute left-1/2 -translate-x-1/2 w-1.5 h-60 rounded-full 
+              bg-[#000080] shadow-md pointer-events-none"
+            style={{ top: '1000px' }}
+          />
+        )}
+      </main>
+
+      {/* ✅ Always-rendered Projects Section in separate container */}
+      <div className="w-full max-w-screen-md mx-auto px-4 mt-[0px]" id="projects">
+        <section className="text-left py-16">
+          <h2 className="text-3xl font-bold text-[#000080] mb-8">Projects</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+            <div className="border border-gray-300 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+              <h3 className="text-xl font-semibold text-[#1E90FF] mb-2">
+                My Portfolio
+              </h3>
+              <p className="text-gray-700">
+                A personal website built with Next.js, Framer Motion, and Tailwind CSS to showcase my work, skills, and experience.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
-      <motion.div
-        initial={{ y: -60, opacity: 0 }}
-        animate={showNavbar ? { y: 0, opacity: 1 } : { y: -60, opacity: 0 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className="fixed top-4 left-1/2 -translate-x-1/2 z-50"
-      >
-        <Navbar />
-      </motion.div>
-      <div className="absolute left-1/2 top-[600px] -translate-x-1/2 w-1.5 h-40 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-md pointer-events-none" />
-
-
-    </main>
+    </>
   );
+
 }
