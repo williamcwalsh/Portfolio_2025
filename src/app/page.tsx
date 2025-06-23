@@ -185,8 +185,9 @@ export default function Home() {
                 imageSrc="/images/placeholder.jpg"
               />
               <ProjectCard
-                title="Project 4"
-                description="This is a placeholder description for Project 4."
+                title="CourseKata Data Analysis"
+                description="Led a team of 5 to win “Best Data-Driven Recommendation” at the New England Statistical Society’s 2024 DataFest. Competed
+with 18 teams (100 coders) in New England, including Yale University, University of Connecticut, and Trinity"
                 imageSrc="/images/placeholder.jpg"
               />
               <ProjectCard
