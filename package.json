@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
-    "framer-motion": "^12.18.1",
+    "framer-motion": "^12.19.1",
     "next": "^15.3.3",
     "postcss": "^8.5.5",
     "react": "^19.1.0",

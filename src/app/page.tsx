@@ -1,5 +1,8 @@
 "use client";
 import Navbar from "./components/Navbar"
+import ProjectCard from "./components/ProjectCard";
+import Skills from "./components/skills/Skills";
+
 
 
 import { useEffect, useState } from "react";
@@ -19,6 +22,41 @@ export default function Home() {
   >("name");
   const [done, setDone] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
+  const [hasSlid, setHasSlid] = useState(false);
+  const projects = [
+    {
+      title: "CuriosityStream",
+      description: "This is a placeholder description for Project 1.",
+      imageSrc: "/images/placeholder.jpg",
+    },
+    {
+      title: "Global Privacy Control— Published by WSJ",
+      description: "This is a placeholder description for Project 2.",
+      imageSrc: "/images/placeholder.jpg",
+    },
+    {
+      title: "Cappuccino Games",
+      description: "This is a placeholder description for Project 3.",
+      imageSrc: "/images/placeholder.jpg",
+    },
+    {
+      title: "CourseKata Data Analysis",
+      description:
+        "Led a team of 5 to win “Best Data-Driven Recommendation” at the New England Statistical Society’s 2024 DataFest...",
+      imageSrc: "/images/placeholder.jpg",
+    },
+    {
+      title: "Project 5",
+      description: "This is a placeholder description for Project 5.",
+      imageSrc: "/images/placeholder.jpg",
+    },
+    {
+      title: "Project 6",
+      description: "This is a placeholder description for Project 6.",
+      imageSrc: "/images/placeholder.jpg",
+    },
+  ];
+
 
   useEffect(() => {
     if (phase !== "name") return;
@@ -94,68 +132,111 @@ export default function Home() {
   }, [text, isDeleting, index, phase, done]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center">
-      <div
-        className={`flex flex-col items-center transition-all duration-500 ${phase !== "name" ? "gap-1" : "gap-0"
-          }`}
-      >
-        <motion.h1
-          className="text-4xl font-extrabold text-[#000080]"
-          initial={{ y: 0 }}
-          animate={{
-            y:
-              phase === "slide" ||
-                phase === "prefix" ||
-                phase === "looping" ||
-                phase === "final"
-                ? -30 // 48px = 3rem = Tailwind -translate-y-12
-                : 0,
-          }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          onAnimationComplete={() => {
-            if (phase === "slide") {
-              setPhase("prefix");
-            }
-          }}
+    <>
+      <main className="min-h-screen flex flex-col items-center justify-center px-4 text-center w-full max-w-screen-md mx-auto">
+        <div
+          className={`flex flex-col items-center transition-all duration-500 ${phase !== "name" ? "gap-1" : "gap-0"}`}
         >
-          {nameText}
-        </motion.h1>
+          <motion.h1
+            className="text-4xl font-extrabold text-[#000080]"
+            initial={{ y: 0 }}
+            animate={{
+              y:
+                phase === "slide" ||
+                  phase === "prefix" ||
+                  phase === "looping" ||
+                  phase === "final"
+                  ? -30
+                  : 0,
+            }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            onAnimationComplete={() => {
+              if (phase === "slide") {
+                setPhase("prefix");
+                setHasSlid(true); // ✅ mark when the first line finishes animating
+              }
+            }}
+          >
+            {nameText}
+          </motion.h1>
 
-        {/* Reserve space early with transparent h2 */}
-        <div className="min-h-[3.5rem]">
-          {(phase !== "name" || prefixText.length > 0) && (
-            <motion.h2
-              className="text-4xl font-extrabold text-[#000080]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-            >
-              {prefixText}
-              {/* <span className="text-[#00bfff]">{text}</span> */}
-              <span className="text-[#1E90FF] drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]">
-                {text}
-              </span>
-
-
-
-              {/* #007bff */}
-
-            </motion.h2>
-          )}
+          <div className="min-h-[3.5rem]">
+            {(phase !== "name" || prefixText.length > 0) && (
+              <motion.h2
+                className="inline-block text-4xl font-extrabold text-[#000080]"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.4 }}
+              >
+                {prefixText}
+                <span className="text-[#1E90FF] drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]">
+                  {text}
+                </span>
+              </motion.h2>
+            )}
+          </div>
         </div>
-      </div>
+
+        <motion.div
+          initial={{ y: -60, opacity: 0 }}
+          animate={showNavbar ? { y: 0, opacity: 1 } : { y: -60, opacity: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90vw] max-w-[700px]"
+        >
+          <Navbar />
+        </motion.div>
+
+        {hasSlid && (
+          <motion.div
+            initial={{ opacity: 0, y: 80, height: "1.5rem" }} // small circle height
+            animate={{ opacity: 1, y: 0, height: "25rem" }}   // full vertical bar height
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="absolute left-1/2 -translate-x-1/2 w-1.5 rounded-full bg-[#000080] shadow-md pointer-events-none"
+            style={{ top: '1100px' }}
+          />
+        )}
+
+      </main>
+
+      {/*  Always-rendered Projects Section in separate container */}
       <motion.div
-        initial={{ y: -60, opacity: 0 }}
-        animate={showNavbar ? { y: 0, opacity: 1 } : { y: -60, opacity: 0 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className="fixed top-4 left-1/2 -translate-x-1/2 z-50"
+        id="projects"
+        initial={{ opacity: 0 }}
+        animate={hasSlid ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full max-w-screen-md mx-auto px-4 mt-[400px]"
       >
-        <Navbar />
+        <section className="text-center py-16">
+          <h2 className="text-3xl font-bold text-[#000080] mb-12">Projects</h2>
+          <div className="flex flex-col gap-12 items-center">
+            {projects.map((project, i) => (
+              <ProjectCard
+                key={i}
+                title={project.title}
+                description={project.description}
+                imageSrc={project.imageSrc}
+                fromLeft={i % 2 === 1}
+              />
+            ))}
+          </div>
+        </section>
       </motion.div>
 
+      <motion.div
+        id="skills"
+        initial={{ opacity: 0 }}
+        animate={hasSlid ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full max-w-screen-md mx-auto px-4 mt-[400px]"
+      >
+        <section className="text-center py-16">
+          <h2 className="text-3xl font-bold text-[#000080] mb-12">Skills</h2>
+          <Skills />
+        </section>
+      </motion.div>
 
+    </>
 
-
-    </main>
   );
+
 }
