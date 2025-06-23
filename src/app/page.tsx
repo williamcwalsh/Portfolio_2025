@@ -1,6 +1,7 @@
 "use client";
 import Navbar from "./components/Navbar"
 import ProjectCard from "./components/ProjectCard";
+import Skills from "./components/skills/Skills";
 
 
 
@@ -221,9 +222,21 @@ export default function Home() {
         </section>
       </motion.div>
 
-
+      <motion.div
+        id="skills"
+        initial={{ opacity: 0 }}
+        animate={hasSlid ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full max-w-screen-md mx-auto px-4 mt-[400px]"
+      >
+        <section className="text-center py-16">
+          <h2 className="text-3xl font-bold text-[#000080] mb-12">Skills</h2>
+          <Skills />
+        </section>
+      </motion.div>
 
     </>
+
   );
 
 }
