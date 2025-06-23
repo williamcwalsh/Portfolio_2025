@@ -22,6 +22,40 @@ export default function Home() {
   const [done, setDone] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
   const [hasSlid, setHasSlid] = useState(false);
+  const projects = [
+    {
+      title: "CuriosityStream",
+      description: "This is a placeholder description for Project 1.",
+      imageSrc: "/images/placeholder.jpg",
+    },
+    {
+      title: "Global Privacy Control— Published by WSJ",
+      description: "This is a placeholder description for Project 2.",
+      imageSrc: "/images/placeholder.jpg",
+    },
+    {
+      title: "Cappuccino Games",
+      description: "This is a placeholder description for Project 3.",
+      imageSrc: "/images/placeholder.jpg",
+    },
+    {
+      title: "CourseKata Data Analysis",
+      description:
+        "Led a team of 5 to win “Best Data-Driven Recommendation” at the New England Statistical Society’s 2024 DataFest...",
+      imageSrc: "/images/placeholder.jpg",
+    },
+    {
+      title: "Project 5",
+      description: "This is a placeholder description for Project 5.",
+      imageSrc: "/images/placeholder.jpg",
+    },
+    {
+      title: "Project 6",
+      description: "This is a placeholder description for Project 6.",
+      imageSrc: "/images/placeholder.jpg",
+    },
+  ];
+
 
   useEffect(() => {
     if (phase !== "name") return;
@@ -164,47 +198,29 @@ export default function Home() {
       </main>
 
       {/*  Always-rendered Projects Section in separate container */}
-      <div className="w-full max-w-screen-md mx-auto px-4 mt-[400px]" id="projects">
+      <motion.div
+        id="projects"
+        initial={{ opacity: 0 }}
+        animate={hasSlid ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full max-w-screen-md mx-auto px-4 mt-[400px]"
+      >
         <section className="text-center py-16">
           <h2 className="text-3xl font-bold text-[#000080] mb-12">Projects</h2>
           <div className="flex flex-col gap-12 items-center">
-            <div className="flex flex-col gap-12 items-center">
+            {projects.map((project, i) => (
               <ProjectCard
-                title="CuriosityStream"
-                description="This is a placeholder description for Project 1."
-                imageSrc="/images/placeholder.jpg"
+                key={i}
+                title={project.title}
+                description={project.description}
+                imageSrc={project.imageSrc}
+                fromLeft={i % 2 === 1}
               />
-              <ProjectCard
-                title="Global Privacy Control— Published by WSJ"
-                description="This is a placeholder description for Project 2."
-                imageSrc="/images/placeholder.jpg"
-              />
-              <ProjectCard
-                title="Cappuccino Games"
-                description="This is a placeholder description for Project 3."
-                imageSrc="/images/placeholder.jpg"
-              />
-              <ProjectCard
-                title="CourseKata Data Analysis"
-                description="Led a team of 5 to win “Best Data-Driven Recommendation” at the New England Statistical Society’s 2024 DataFest. Competed
-with 18 teams (100 coders) in New England, including Yale University, University of Connecticut, and Trinity"
-                imageSrc="/images/placeholder.jpg"
-              />
-              <ProjectCard
-                title="Project 5"
-                description="This is a placeholder description for Project 5."
-                imageSrc="/images/placeholder.jpg"
-              />
-              <ProjectCard
-                title="Project 6"
-                description="This is a placeholder description for Project 6."
-                imageSrc="/images/placeholder.jpg"
-              />
-            </div>
-
+            ))}
           </div>
         </section>
-      </div>
+      </motion.div>
+
 
 
     </>
