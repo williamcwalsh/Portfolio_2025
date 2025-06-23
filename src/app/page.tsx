@@ -65,7 +65,7 @@ export default function Home() {
     const timeout = setTimeout(() => {
       setNameText(full.slice(0, nameText.length + 1));
       if (nameText.length + 1 === full.length) {
-        setShowNavbar(true); // ✅ only controls Navbar
+        setShowNavbar(true);
         setTimeout(() => setPhase("slide"), 200);
       }
 
@@ -202,7 +202,7 @@ export default function Home() {
       <motion.div
         id="projects"
         initial={{ opacity: 0 }}
-        animate={hasSlid ? { opacity: 1 } : { opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="w-full max-w-screen-md mx-auto px-4 mt-[400px]"
       >
@@ -221,13 +221,12 @@ export default function Home() {
           </div>
         </section>
       </motion.div>
-
       <motion.div
         id="skills"
         initial={{ opacity: 0 }}
-        animate={hasSlid ? { opacity: 1 } : { opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-full max-w-screen-md mx-auto px-4 mt-[400px]"
+        className="w-full max-w-6xl mx-auto px-4 mt-[400px]"
       >
         <section className="text-center py-16">
           <h2 className="text-3xl font-bold text-[#000080] mb-12">Skills</h2>
