@@ -153,7 +153,7 @@ export default function Home() {
             onAnimationComplete={() => {
               if (phase === "slide") {
                 setPhase("prefix");
-                setHasSlid(true); // ✅ mark when the first line finishes animating
+                setHasSlid(true); //  mark when the first line finishes animating
               }
             }}
           >
@@ -192,7 +192,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0, height: "25rem" }}   // full vertical bar height
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="absolute left-1/2 -translate-x-1/2 w-1.5 rounded-full bg-[#000080] shadow-md pointer-events-none"
-            style={{ top: '900px' }}
+            style={{ top: '1100px' }}
           />
         )}
 
@@ -253,8 +253,28 @@ export default function Home() {
           className="w-1.5 bg-[#000080] rounded-full shadow-md pointer-events-none"
         />
       </div>
-    </>
 
+      <motion.div
+        id="experience"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full max-w-screen-md mx-auto px-4"
+      >
+        <section className="text-center py-16">
+          <h2 className="text-3xl font-bold text-[#000080] mb-12">Experience</h2>
+        </section>
+        <div className="relative h-[25rem] my-12 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, height: "1.5rem" }}
+            whileInView={{ opacity: 1, height: "50rem" }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            className="w-3 bg-[#1E90FF] border border-white/20 rounded-full shadow-inner shadow-white/10 pointer-events-none"
+          />
+        </div>
+      </motion.div>
+    </>
   );
 
 }
