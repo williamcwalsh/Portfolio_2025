@@ -26,6 +26,7 @@ export default function ExperienceCard({
                     transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
                     className={`absolute top-1/2 -translate-y-1/2 max-w-[320px] border border-gray-300 p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer transition-colors duration-300 will-change-transform
                     left-1/2 ${fromLeft ? "-translate-x-[calc(100%+4.5rem)]" : "translate-x-[calc(4.5rem)]"}
+                    ${fromLeft ? "after:content-[''] after:absolute after:top-1/2 after:right-0 after:translate-x-full after:-translate-y-1/2 after:w-0 after:h-0 after:border-l-[12px] after:border-l-[#000080] after:border-t-[8px] after:border-t-transparent after:border-b-[8px] after:border-b-transparent" : "before:content-[''] before:absolute before:top-1/2 before:left-0 before:-translate-x-full before:-translate-y-1/2 before:w-0 before:h-0 before:border-r-[12px] before:border-r-[#000080] before:border-t-[8px] before:border-t-transparent before:border-b-[8px] before:border-b-transparent"}
                     `}
                 >
                     <p className="text-base text-gray-800 text-left">{description}</p>
@@ -35,7 +36,6 @@ export default function ExperienceCard({
                 <motion.div
                     initial={{ opacity: 0, x: fromLeft ? 100 : -100 }}
                     whileInView={{ opacity: 1, x: fromLeft ? [100, -10, 0] : [-100, 10, 0] }}
-                    whileHover={{ scale: 1.05 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
                     className={`absolute top-1/2 -translate-y-1/2 text-base text-[#000080] text-opacity-70 z-20
@@ -49,7 +49,6 @@ export default function ExperienceCard({
                 <motion.button
                     initial={{ opacity: 0, x: fromLeft ? -100 : 100 }}
                     whileInView={{ opacity: 1, x: fromLeft ? [-100, 10, 0] : [100, -10, 0] }}
-                    whileHover={{ scale: 1.05 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
                     className="z-10 w-20 h-20 bg-[#f8f8f8] border border-gray-300 rounded-full shadow-[inset_2px_2px_4px_rgba(255,255,255,0.8),_inset_-2px_-2px_4px_rgba(0,0,0,0.1)] flex items-center justify-center mx-auto will-change-transform"

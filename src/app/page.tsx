@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar"
 import ProjectCard from "./components/ProjectCard";
 import Skills from "./components/skills/Skills";
 import ExperienceCard from "./components/ExperienceCard";
+import EducationCard from "./components/EducationCard";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -302,6 +303,29 @@ export default function Home() {
                 fromLeft={i % 2 === 0}
               />
             ))}
+          </div>
+        </section>
+      </motion.div>
+      <motion.div
+        id="education"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full max-w-screen-md mx-auto px-4"
+      >
+        <section className="text-center py-16">
+          <h2 className="text-3xl font-bold text-[#000080] mb-12">My Education</h2>
+          <div className="flex flex-col items-center">
+            <EducationCard
+              logoSrc="/images/wes.png"
+              title="Wesleyan University"
+              degree="Bachelor of Arts"
+              graduationYear="2027"
+              gpa="3.8/4"
+              stemGpa="3.9/4"
+              major="Major in Computer Science"
+              deansList="Dean's List Freshman, Sophomore Year"
+            />
           </div>
         </section>
       </motion.div>
