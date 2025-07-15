@@ -4,6 +4,7 @@ import ProjectCard from "./components/ProjectCard";
 import Skills from "./components/skills/Skills";
 import ExperienceCard from "./components/ExperienceCard";
 import EducationCard from "./components/EducationCard";
+import ContactSection from "./components/ContactSection";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -329,6 +330,7 @@ export default function Home() {
           </div>
         </section>
       </motion.div>
+      <ContactSection />
     </>
   );
 }
