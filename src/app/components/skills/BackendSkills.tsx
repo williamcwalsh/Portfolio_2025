@@ -31,7 +31,7 @@ export default function BackendSkills({ fromLeft = true }: Props) {
                 viewport={{ once: true, amount: 0.3 }}
                 className="mb-8 flex gap-40 items-start"
             >
-                <div className="min-w-[90px] pt-1 text-xl font-medium">Backend</div>
+                <div className="min-w-[90px] text-[#000080] pt-1 text-xl font-medium">Backend</div>
                 <div className="flex flex-wrap gap-4">
                     {skills.map((skill) => (
                         <SkillBadge key={skill.label} {...skill} />

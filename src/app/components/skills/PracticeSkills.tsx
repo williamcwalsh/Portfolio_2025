@@ -32,7 +32,7 @@ export default function PracticeSkills({ fromLeft = true }: Props) {
                 className="mb-8 flex gap-40 items-start"
             >
                 <div className="mb-8 flex gap-40 items-start">
-                    <div className="min-w-[90px] pt-1 text-xl font-medium">Practice</div>
+                    <div className="min-w-[90px] pt-1 text-xl text-[#000080] font-medium">Practice</div>
                     <div className="flex flex-wrap gap-4">
                         {skills.map((skill) => (
                             <SkillBadge key={skill.label} {...skill} />

@@ -25,35 +25,36 @@ export default function Home() {
   const [hasSlid, setHasSlid] = useState(false);
   const projects = [
     {
-      title: "CuriosityStream",
-      description: "This is a placeholder description for Project 1.",
-      imageSrc: "/images/placeholder.jpg",
+      id: "curiosity-stream",
+      title: "CuriosityStream Internship",
+      description: "End to end modular streaming platform powering multiple subscription video-on-demand services including flagship CuriosityStream.",
+      description2: "20 Million+ subscribers globally.",
+      imageSrc: "/images/curiosityExperience.jpg",
     },
     {
-      title: "Global Privacy Control— Published by WSJ",
-      description: "This is a placeholder description for Project 2.",
-      imageSrc: "/images/placeholder.jpg",
+      id: "stryv-academics",
+      title: "Stryv Academics",
+      description: "Progressive web application centralizing tutoring management for Stryv Academics, with role-based scheduling, payments, and communication for students, parents, tutors, and admins.",
+      imageSrc: "/images/STRYV.png",
     },
     {
-      title: "Cappuccino Games",
-      description: "This is a placeholder description for Project 3.",
-      imageSrc: "/images/placeholder.jpg",
+      id: "global-privacy-control",
+      title: "Global Privacy Control— Published by The Washington Post",
+      description: "Research project testing Global Privacy Control (GPC) compliance across major retailer websites, uncovering widespread non-compliance and statistically significant evidence of illegal retargeted advertising.",
+      imageSrc: "/images/GPC.png",
     },
     {
+      id: "coursekata-analysis",
       title: "CourseKata Data Analysis",
       description:
-        "Led a team of 5 to win \"Best Data-Driven Recommendation\" at the New England Statistical Society's 2024 DataFest...",
-      imageSrc: "/images/placeholder.jpg",
+        "Led a team of 5 to win \"Best Data-Driven Recommendation\" at the New England Statistical Society's 2024 DataFest.",
+      imageSrc: "/images/DataFest.png",
     },
     {
-      title: "Project 5",
-      description: "This is a placeholder description for Project 5.",
-      imageSrc: "/images/placeholder.jpg",
-    },
-    {
-      title: "Project 6",
-      description: "This is a placeholder description for Project 6.",
-      imageSrc: "/images/placeholder.jpg",
+      id: "cappuccino-games",
+      title: "Cappuccino Games",
+      description: "This is a placeholder description for Project 3.",
+      imageSrc: "/images/cappuccinoBanner.png",
     },
   ];
 
@@ -144,7 +145,7 @@ export default function Home() {
     },
     {
       logoSrc: "/images/CR.png",
-      description: "Published in WSJ for uncovering illegal ad practices under Global Privacy Control laws.",
+      description: "Published in The Washington Post for uncovering illegal ad practices under Global Privacy Control laws.",
       dateRange: "January 2024 – March 2025",
     },
     {
@@ -234,8 +235,10 @@ export default function Home() {
             {projects.map((project, i) => (
               <ProjectCard
                 key={i}
+                id={project.id}
                 title={project.title}
                 description={project.description}
+                description2={project.description2}
                 imageSrc={project.imageSrc}
                 fromLeft={i % 2 === 1}
               />

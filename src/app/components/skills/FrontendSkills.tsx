@@ -32,7 +32,7 @@ export default function FrontendSkills({ fromLeft = true }: Props) {
                 className="mb-8 flex gap-40 items-start"
             >
                 <div className="mb-8 flex gap-40 items-start">
-                    <div className="min-w-[90px] pt-1 text-xl font-medium">Frontend</div>
+                    <div className="min-w-[90px] text-[#000080] pt-1 text-xl text-dark-blue font-medium">Frontend</div>
                     <div className="flex flex-wrap gap-4">
                         {skills.map((skill) => (
                             <SkillBadge key={skill.label} {...skill} />
