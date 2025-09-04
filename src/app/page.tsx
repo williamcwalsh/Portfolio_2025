@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "./components/Navbar"
+import Navbar from "./components/Navbar";
 import ProjectCard from "./components/ProjectCard";
 import Skills from "./components/skills/Skills";
 import ExperienceCard from "./components/ExperienceCard";
@@ -27,37 +27,45 @@ export default function Home() {
     {
       id: "curiosity-stream",
       title: "CuriosityStream Internship",
-      description: "End to end modular streaming platform powering multiple subscription video-on-demand services including flagship CuriosityStream.",
+      description:
+        "End to end modular streaming platform powering multiple subscription video-on-demand services including flagship CuriosityStream.",
       description2: "20 Million+ subscribers globally.",
       imageSrc: "/images/curiosityExperience.jpg",
+      category: "Software Engineering",
     },
     {
       id: "stryv-academics",
       title: "Stryv Academics",
-      description: "Progressive web application centralizing tutoring management for Stryv Academics, with role-based scheduling, payments, and communication for students, parents, tutors, and admins.",
+      description:
+        "Progressive web application centralizing tutoring management for Stryv Academics, with role-based scheduling, payments, and communication for students, parents, tutors, and admins.",
       imageSrc: "/images/STRYV.png",
+      category: "Fullstack Development",
     },
     {
       id: "global-privacy-control",
       title: "Global Privacy Control— Published by The Washington Post",
-      description: "Research project testing Global Privacy Control (GPC) compliance across major retailer websites, uncovering widespread non-compliance and statistically significant evidence of illegal retargeted advertising.",
+      description:
+        "Research project testing Global Privacy Control (GPC) compliance across major retailer websites, uncovering widespread non-compliance and statistically significant evidence of illegal retargeted advertising.",
       imageSrc: "/images/GPC.png",
+      category: "Research",
     },
     {
       id: "coursekata-analysis",
       title: "CourseKata Data Analysis",
       description:
-        "Led a team of 5 to win \"Best Data-Driven Recommendation\" at the New England Statistical Society's 2024 DataFest.",
+        'Led a team of 5 to win "Best Data-Driven Recommendation" at the New England Statistical Society\'s 2024 DataFest.',
       imageSrc: "/images/DataFest.png",
+      category: "Data Science",
     },
     {
       id: "cappuccino-games",
       title: "Cappuccino Games",
-      description: "This is a placeholder description for Project 3.",
+      description:
+        "Developed a 2D multiplayer platformer at Cappuccino Games, leading a team to build custom matchmaking, real-time networking, and scalable gameplay systems.",
       imageSrc: "/images/cappuccinoBanner.png",
+      category: "Game Development",
     },
   ];
-
 
   useEffect(() => {
     if (phase !== "name") return;
@@ -69,7 +77,6 @@ export default function Home() {
         setShowNavbar(true);
         setTimeout(() => setPhase("slide"), 200);
       }
-
     }, 60);
 
     return () => clearTimeout(timeout);
@@ -135,23 +142,23 @@ export default function Home() {
   const experiences = [
     {
       logoSrc: "/images/curiosity.png",
-      description: "Worked on the CuriosityU app's onboarding flow, password reset, and localization pipeline.",
-      dateRange: "January 2024 – March 2025",
+      description: "Software Engineer Intern at CuriosityStream.",
+      dateRange: "May 2025 – August 2025",
     },
     {
-      logoSrc: "/images/curiosity.png",
-      description: "Fullstack developer for Stryv Academics",
+      logoSrc: "/images/STRYV_logo.png",
+      description: "Fullstack developer at Stryv Academics.",
       dateRange: "January 2025 – May 2025",
     },
     {
       logoSrc: "/images/CR.png",
-      description: "Published in The Washington Post for uncovering illegal ad practices under Global Privacy Control laws.",
-      dateRange: "January 2024 – March 2025",
+      description: "Cyber Security Research with Consumer Reports.",
+      dateRange: "August 2024 – December 2024",
     },
     {
       logoSrc: "/images/cappuccino.png",
-      description: "Led statistical analysis for CourseKata, winning a top award at DataFest 2024.",
-      dateRange: "January 2024 – March 2025",
+      description: "Game Developer Intern at Cappuccino Games.",
+      dateRange: "May 2023 – July 2023",
     },
   ];
 
@@ -159,7 +166,9 @@ export default function Home() {
     <>
       <main className="min-h-screen flex flex-col items-center justify-center px-4 text-center w-full max-w-screen-md mx-auto">
         <div
-          className={`flex flex-col items-center transition-all duration-500 ${phase !== "name" ? "gap-1" : "gap-0"}`}
+          className={`flex flex-col items-center transition-all duration-500 ${
+            phase !== "name" ? "gap-1" : "gap-0"
+          }`}
         >
           <motion.h1
             className="text-4xl font-extrabold text-[#000080]"
@@ -167,9 +176,9 @@ export default function Home() {
             animate={{
               y:
                 phase === "slide" ||
-                  phase === "prefix" ||
-                  phase === "looping" ||
-                  phase === "final"
+                phase === "prefix" ||
+                phase === "looping" ||
+                phase === "final"
                   ? -30
                   : 0,
             }}
@@ -252,7 +261,7 @@ export default function Home() {
           initial={{ opacity: 0, height: "1.5rem" }}
           whileInView={{ opacity: 1, height: "25rem" }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: .5, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="w-1.5 bg-[#000080] rounded-full shadow-md pointer-events-none"
         />
       </div>
@@ -274,7 +283,7 @@ export default function Home() {
           initial={{ opacity: 0, height: "1.5rem" }}
           whileInView={{ opacity: 1, height: "25rem" }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: .5, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="w-1.5 bg-[#000080] rounded-full shadow-md pointer-events-none"
         />
       </div>
@@ -287,13 +296,15 @@ export default function Home() {
         className="w-full max-w-screen-md mx-auto px-4"
       >
         <section className="text-center py-16">
-          <h2 className="text-3xl font-bold text-[#000080] mb-12">Experience</h2>
+          <h2 className="text-3xl font-bold text-[#000080] mb-12">
+            Experience
+          </h2>
           <div className="relative h-[50rem] my-12 flex justify-center">
             <motion.div
               initial={{ opacity: 0, height: "1.5rem" }}
               whileInView={{ opacity: 1, height: "50rem" }}
               viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: .5, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="w-3 bg-white/90 border border-white/20 rounded-full shadow-inner shadow-white/10 pointer-events-none"
             />
           </div>
@@ -318,7 +329,9 @@ export default function Home() {
         className="w-full max-w-screen-md mx-auto px-4"
       >
         <section className="text-center py-16">
-          <h2 className="text-3xl font-bold text-[#000080] mb-12">My Education</h2>
+          <h2 className="text-3xl font-bold text-[#000080] mb-12">
+            My Education
+          </h2>
           <div className="flex flex-col items-center">
             <EducationCard
               logoSrc="/images/wes.png"
