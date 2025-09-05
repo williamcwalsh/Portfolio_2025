@@ -339,7 +339,7 @@ export default function Home() {
               degree="Bachelor of Arts"
               graduationYear="2027"
               gpa="3.8/4"
-              stemGpa="3.9/4"
+              stemGpa="3.8/4"
               major="Major in Computer Science"
               deansList="Dean's List Freshman, Sophomore Year"
             />
