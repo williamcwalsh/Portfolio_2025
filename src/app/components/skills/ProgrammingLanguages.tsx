@@ -3,40 +3,44 @@ import { motion } from "framer-motion";
 
 const skills = [
   {
-    label: "HTML",
+    label: "Python",
     imageSrc:
-      "https://img.icons8.com/?size=100&id=20909&format=png&color=000000",
+      "https://img.icons8.com/?size=100&id=13441&format=png&color=000000",
   },
   {
-    label: "CSS",
+    label: "C++",
     imageSrc:
-      "https://img.icons8.com/?size=100&id=21278&format=png&color=000000",
+      "https://img.icons8.com/?size=100&id=40669&format=png&color=000000",
   },
   {
-    label: "React",
-    imageSrc:
-      "https://img.icons8.com/?size=100&id=123603&format=png&color=000000",
+    label: "C#",
+    imageSrc: "https://www.jetbrains.com/guide/assets/csharp-logo-265a149e.svg",
   },
   {
-    label: "React Native",
+    label: "Java",
     imageSrc:
-      "https://img.icons8.com/?size=100&id=123603&format=png&color=000000",
+      "https://img.icons8.com/?size=100&id=13679&format=png&color=000000",
   },
   {
-    label: "Vue",
+    label: "PHP",
     imageSrc:
-      "https://img.icons8.com/?size=100&id=rY6agKizO9eb&format=png&color=000000",
+      "https://img.icons8.com/?size=100&id=f0R4xVI4Sc8O&format=png&color=000000",
   },
   {
-    label: "Next.js",
+    label: "JavaScript",
     imageSrc:
-      "https://img.icons8.com/?size=100&id=123603&format=png&color=000000",
+      "https://img.icons8.com/?size=100&id=108784&format=png&color=000000",
+  },
+  {
+    label: "SQL",
+    imageSrc:
+      "https://img.icons8.com/?size=100&id=13441&format=png&color=000000",
   },
 ];
 
 type Props = { fromLeft?: boolean };
 
-export default function FrontendSkills({ fromLeft = true }: Props) {
+export default function ProgrammingLanguages({ fromLeft = true }: Props) {
   return (
     <>
       <motion.div
@@ -51,7 +55,7 @@ export default function FrontendSkills({ fromLeft = true }: Props) {
       >
         <div className="mb-8 flex gap-40 items-start">
           <div className="min-w-[90px] text-[#000080] pt-1 text-xl text-dark-blue font-medium">
-            Frontend
+            Languages
           </div>
           <div className="flex flex-wrap gap-4">
             {skills.map((skill) => (
